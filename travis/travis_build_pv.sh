@@ -21,9 +21,7 @@ if [ -d $PV_SOURCE_DIR ]; then
   fi
 fi
 if [ ! -d "$PV_SOURCE_DIR" ]; then
-  git clone $pv_repo_str $PV_SOURCE_DIR --depth 1
-  cd $PV_SOURCE_DIR
-  git submodule init --depth 1
+  git clone --recursive $pv_repo_str $PV_SOURCE_DIR --depth 1
 fi
 mkdir -p $PV_DIR
 cd $PV_DIR
