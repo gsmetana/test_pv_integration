@@ -1,0 +1,48 @@
+language: cpp
+compiler:
+  - gcc
+env:
+  global:
+    - NUM_THREADS=4
+
+    - SCRIPTS=${TRAVIS_BUILD_DIR}/travis
+    - EXTERNALS_DIR=/home/travis/external
+
+  matrix:
+    - PV_VERSION=5.0
+
+before_install:
+
+  - export PV_SOURCE_DIR=$EXTERNALS_DIR/pv-$PV_VERSION
+  - export PV_DIR=$EXTERNALS_DIR/pv-$PV_VERSION-build
+
+install:
+  - $SCRIPTS/travis_build_pv.sh
+  - $SCRIPTS/travis_before_script_cleanup.sh
+
+addons:
+  apt:
+    sources:
+    - george-edison55-precise-backports # cmake 3.2.3 / doxygen 1.8.3
+
+    packages:
+    - curl
+    - cmake
+    - cmake-data
+
+cache:
+  directories:
+  - /home/travis/external/pv-5.0
+  - /home/travis/external/pv-5.0-build
+
+before_script:
+
+  - mkdir build
+  - cd build
+
+
+script:
+
+after_success:
+
+
