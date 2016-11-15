@@ -29,6 +29,7 @@ addons:
     - curl
     - cmake
     - cmake-data
+    - libqt4-xmlpatterns
 
 cache:
   directories:
