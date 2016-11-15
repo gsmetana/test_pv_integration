@@ -22,6 +22,7 @@ if [ -d $PV_SOURCE_DIR ]; then
 fi
 if [ ! -d "$PV_SOURCE_DIR" ]; then
   git clone --recursive $pv_repo_str $PV_SOURCE_DIR --depth 1
+  mv ${TRAVIS_BUILD_DIR}/ParaViewMacros.cmake $PV_SOURCE_DIR/CMake/
 fi
 mkdir -p $PV_DIR
 cd $PV_DIR
