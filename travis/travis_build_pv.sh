@@ -3,7 +3,7 @@
 set -e
 MAKE="make --jobs=$NUM_THREADS --keep-going"
 
-cmake_arg_str=" -DBUILD_TESTING=0 -DBUILD_SHARED_LIBS=1  -DBUILD_EXAMPLES=0 "
+cmake_arg_str=" -DBUILD_TESTING=0 -DBUILD_SHARED_LIBS=1  -DBUILD_EXAMPLES=0 -DBUILD_DOCUMENTATION=0"
 pv_repo_str=""
 
 if [ "$PV_VERSION" == "5.0" ]; then
@@ -22,7 +22,6 @@ if [ -d $PV_SOURCE_DIR ]; then
 fi
 if [ ! -d "$PV_SOURCE_DIR" ]; then
   git clone --recursive $pv_repo_str $PV_SOURCE_DIR --depth 1
-  mv ${TRAVIS_BUILD_DIR}/ParaViewMacros.cmake $PV_SOURCE_DIR/CMake/
 fi
 mkdir -p $PV_DIR
 cd $PV_DIR
