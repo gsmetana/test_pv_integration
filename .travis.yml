@@ -1,21 +1,16 @@
 language: cpp
 
-
 addons:
   apt:
     sources:
     - george-edison55-precise-backports # cmake 3.2.3 / doxygen 1.8.3
     - ubuntu-toolchain-r-test
-    - ppa:beineri/opt-qt551
+    - debian-sid
 
     packages:
     - cmake
     - cmake-data
-    - qt55base 
-    - qt55multimedia 
-    - qt55translations 
-    - qt55tools
-
+    - qt5-default
 env:
   global:
     - NUM_THREADS=4
