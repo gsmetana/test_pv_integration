@@ -27,6 +27,3 @@ mkdir -p $PV_DIR
 cd $PV_DIR
 cmake $cmake_arg_str $PV_SOURCE_DIR
 $MAKE
-
-export CMAKE_MODULE_PATH=$CMAKE_MODULE_PATH:$PV_DIR
-
