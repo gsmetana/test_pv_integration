@@ -8,7 +8,7 @@ addons:
     packages:
     - cmake
     - cmake-data
-    - qt4-default
+    - qt4-dev-tools
 env:
   global:
     - NUM_THREADS=4
