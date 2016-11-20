@@ -1,39 +1,20 @@
 language: cpp
 
-matrix:
-  include:
-    - os: linux
-      env: QT_BASE=55 COMPILER=g++-4.9 CMAKE_BUILD_TYPE=Debug
-      compiler: gcc
-      addons:
-        apt:
-          sources:
-          - ubuntu-toolchain-r-test
-          packages:
-          - gcc-4.9
-          - g++-4.9
 
-    - os: linux
-      env: QT_BASE=55 COMPILER=g++-4.9 CMAKE_BUILD_TYPE=Release
-      compiler: gcc
-      addons:
-        apt:
-          sources:
-          - ubuntu-toolchain-r-test
-          packages:
-          - gcc-4.9
-          - g++-4.9
+addons:
+  apt:
+    sources:
+    - george-edison55-precise-backports # cmake 3.2.3 / doxygen 1.8.3
+    - ubuntu-toolchain-r-test
+    - ppa:beineri/opt-qt551
 
-    - os: linux
-      env: QT_BASE=55 COMPILER=g++-5 CMAKE_BUILD_TYPE=Release
-      compiler: gcc
-      addons:
-        apt:
-          sources:
-          - ubuntu-toolchain-r-test
-          packages:
-          - gcc-5
-          - g++-5
+    packages:
+    - cmake
+    - cmake-data
+    - qt55base 
+    - qt55multimedia 
+    - qt55translations 
+    - qt55tools
 
 env:
   global:
@@ -46,19 +27,10 @@ env:
     - PV_DIR=$EXTERNALS_DIR/pv-$PV_VERSION-build
 
 before_install:
-  - if [ "$QT_BASE" = "55" ]; then sudo add-apt-repository ppa:beineri/opt-qt551 -y; fi
-  - sudo apt-get update -qq
+
 
 
 install:
-  - if [ "$QT_BASE" = "55" ]; then sudo apt-get install -qq qt55base qt55multimedia qt55translations qt55tools ; source /opt/qt55/bin/qt55-env.sh ; export QTHOME=/opt/qt55 ; fi
-
-  # cmake
-  - curl -O https://cmake.org/files/v3.4/cmake-3.4.1-Linux-x86_64.tar.gz
-  - tar -xf cmake-3.4.1-Linux-x86_64.tar.gz
-  - rm -f cmake-3.4.1-Linux-x86_64.tar.gz
-  - export PATH=${PWD}/cmake-3.4.1-Linux-x86_64/bin:${PATH}
-
   - $SCRIPTS/travis_build_pv.sh
   - $SCRIPTS/travis_before_script_cleanup.sh
 
