@@ -16,17 +16,18 @@ env:
     - SCRIPTS=${TRAVIS_BUILD_DIR}/travis
     - EXTERNALS_DIR=/home/travis/external
     - PV_VERSION=5.0
+
     - PV_SOURCE_DIR=$EXTERNALS_DIR/pv-$PV_VERSION
     - PV_DIR=$EXTERNALS_DIR/pv-$PV_VERSION-build
+    - CMAKE_MODULE_PATH=$PV_DIR
 
 before_install:
-
 
 
 install:
   - $SCRIPTS/travis_build_pv.sh
   - $SCRIPTS/travis_before_script_cleanup.sh
-  - export CMAKE_MODULE_PATH=$PV_DIR
+
 
 
 cache:
