@@ -19,7 +19,7 @@ env:
 
     - PV_SOURCE_DIR=$EXTERNALS_DIR/pv-$PV_VERSION
     - PV_DIR=$EXTERNALS_DIR/pv-$PV_VERSION-build
-    - CMAKE_MODULE_PATH=$PV_DIR
+
 
 before_install:
 
@@ -39,7 +39,7 @@ before_script:
 
   - mkdir build
   - cd build
-  - cmake  ..
+  - cmake -DCMAKE_MODULE_PATH=$PV_DIR ..
 
 script:
   - make -j$NUM_THREADS
