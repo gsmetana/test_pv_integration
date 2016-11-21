@@ -32,6 +32,9 @@ cache:
   - /home/travis/external/pv-5.0
   - /home/travis/external/pv-5.0-build
 
+before_cache:
+  - $SCRIPTS/travis_clean_pv_cache.sh
+
 before_script:
 
   - mkdir build
