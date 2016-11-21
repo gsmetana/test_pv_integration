@@ -1,8 +1,6 @@
 #!/bin/bash
 # remove cmake files so travis doesn't upload entire cache every time
 
-PV_DIR=/home/smetana/Documents/ParaView-bin
-
 shopt -s nullglob
 
 rm -fv $PV_DIR/CMakeFiles/CMakeError.log
