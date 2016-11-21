@@ -20,15 +20,12 @@ env:
     - PV_SOURCE_DIR=$EXTERNALS_DIR/pv-$PV_VERSION
     - PV_DIR=$EXTERNALS_DIR/pv-$PV_VERSION-build
 
-
 before_install:
 
 
 install:
   - $SCRIPTS/travis_build_pv.sh
   - $SCRIPTS/travis_before_script_cleanup.sh
-
-
 
 cache:
   directories:
@@ -39,7 +36,7 @@ before_script:
 
   - mkdir build
   - cd build
-  - cmake -DCMAKE_MODULE_PATH=$PV_DIR ..
+  - cmake -DCMAKE_PREFIX_PATH=$PV_DIR ..
 
 script:
   - make -j$NUM_THREADS
